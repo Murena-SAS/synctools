@@ -33,7 +33,8 @@ class TaskProvider private constructor(
     ) {
         JtxBoard("at.techbee.jtx.provider", "at.techbee.jtx", 210000000, "2.10.00", PERMISSION_JTX_READ, PERMISSION_JTX_WRITE),
         TasksOrg("org.tasks.opentasks", "org.tasks", 100000, "10.0", PERMISSION_TASKS_ORG_READ, PERMISSION_TASKS_ORG_WRITE),
-        OpenTasks("org.dmfs.tasks", "org.dmfs.tasks", 103, "1.1.8.2", PERMISSION_OPENTASKS_READ, PERMISSION_OPENTASKS_WRITE);
+        OpenTasks("org.dmfs.tasks", "org.dmfs.tasks", 103, "1.1.8.2", PERMISSION_OPENTASKS_READ, PERMISSION_OPENTASKS_WRITE),
+        EOpenTasks("foundation.e.tasks", "foundation.e.tasks", 1, "1.4.2", PERMISSION_EOPENTASKS_READ, PERMISSION_EOPENTASKS_WRITE);
 
         companion object {
             fun fromAuthority(authority: String): ProviderName {
@@ -55,6 +56,7 @@ class TaskProvider private constructor(
             get() = Logger.getLogger(TaskProvider::javaClass.name)
 
         val TASK_PROVIDERS = listOf(
+                ProviderName.EOpenTasks,
                 ProviderName.OpenTasks,
                 ProviderName.TasksOrg,
                 ProviderName.JtxBoard
@@ -63,6 +65,10 @@ class TaskProvider private constructor(
         const val PERMISSION_OPENTASKS_READ = "org.dmfs.permission.READ_TASKS"
         const val PERMISSION_OPENTASKS_WRITE = "org.dmfs.permission.WRITE_TASKS"
         val PERMISSIONS_OPENTASKS = arrayOf(PERMISSION_OPENTASKS_READ, PERMISSION_OPENTASKS_WRITE)
+
+        const val PERMISSION_EOPENTASKS_READ = "foundation.e.permission.READ_TASKS"
+        const val PERMISSION_EOPENTASKS_WRITE = "foundation.e.permission.WRITE_TASKS"
+        val PERMISSIONS_EOPENTASKS = arrayOf(PERMISSION_EOPENTASKS_READ, PERMISSION_EOPENTASKS_WRITE)
 
         const val PERMISSION_TASKS_ORG_READ = "org.tasks.permission.READ_TASKS"
         const val PERMISSION_TASKS_ORG_WRITE = "org.tasks.permission.WRITE_TASKS"
